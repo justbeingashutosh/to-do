@@ -5,7 +5,9 @@ const path = require('path');
 const mongoose = require('mongoose')
 const ejs = require('ejs');
 const override = require('method-override')
-
+require('dotenv').config()
+const atlasURI = process.env.DBURI
+console.log("Logging Database Connection URI: ", atlasURI)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -13,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(override('_method'));
 
-mongoose.connect('mongodb://127.0.0.1:27017/to-do', {useUnifiedTopology: true})
+mongoose.connect(atlasURI, {useUnifiedTopology: true})
 .then(()=>{
     console.log("Connected to database")
 })
