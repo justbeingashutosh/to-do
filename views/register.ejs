@@ -41,12 +41,16 @@
               />
               <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa-regular fa-eye"></i></button>
             </div>
-            <div id="msg"></div>
+            <%if(typeof data !== "undefined"){%>
+                <%if(data.msg){%>
+                <div id="msg"><%=data.msg%></div>
+              <%}%>
+            <%}%>
             <button id="submitbtn">Submit</button>
         </form>
             <fieldset>
               <legend>OR</legend>
-              <button id="login">Login</button>
+              <button id="login" type="button">Login</button>
             </fieldset>
           </div>
         </div>

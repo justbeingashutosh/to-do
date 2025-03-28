@@ -113,7 +113,7 @@ function hashPassword(password){
 
 app.get('/home', async(req, res) => {
     const userData = await users.findOne({username: req.user.username});
-    console.log("Logging user data tasks: ", userData.tasks)
+    // console.log("Logging user data tasks: ", userData.tasks)
     res.render('index', {userData: userData.tasks});
 });
 app.get('/', (req, res)=>{
@@ -124,7 +124,7 @@ app.get('/', (req, res)=>{
     res.render('home')
 })
 app.get('/login', (req, res) => {
-    console.log("Get request recieved at login route.")
+    // console.log("Get request recieved at login route.")
     if(req.user){
         res.redirect('/home')
         return
@@ -155,10 +155,11 @@ app.get('/register', async(req, res) => {
 })
 app.post('/register', async(req, res)=>{
     const {username, password} = req.body
-    console.log(username, password)
+    // console.log(username, password)
     const user = await users.findOne({username: username})
     if(user){
-        res.json({error: "That user already exists. Please choose a different username or login."})
+        res.render('register', {data:{msg: "That user already exists. Please choose a different username or login."}})
+        return
     }else{
         const {salt, hash} = hashPassword(password)
         await users.create({
