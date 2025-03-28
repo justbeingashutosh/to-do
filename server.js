@@ -7,7 +7,7 @@ const ejs = require('ejs');
 const override = require('method-override')
 require('dotenv').config()
 const atlasURI = process.env.DBURI
-console.log("Logging Database Connection URI: ", atlasURI)
+// console.log("Logging Database Connection URI: ", atlasURI)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
