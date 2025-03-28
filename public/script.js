@@ -1,8 +1,14 @@
 const doneCount = document.querySelector("#done-count")
 const todoCount = document.querySelector("#todo-count")
+const allSetLabel = document.querySelector("#all-set")
 window.addEventListener('load', ()=>{
     doneCount.textContent = doneTab.childElementCount
-    todoCount.textContent = todoTab.childElementCount
+    todoCount.textContent = todoTab.childElementCount-1
+    if(todoTab.childElementCount == 1){
+        allSetLabel.style.display = "block"
+    }else{
+        allSetLabel.style.display = "none"
+    }
 })
 
 async function undoTask(id, e=event){
@@ -12,6 +18,11 @@ async function undoTask(id, e=event){
     todoTab.appendChild(task)
     todoCount.textContent = parseInt(todoCount.textContent)+1
     doneCount.textContent = parseInt(doneCount.textContent)-1
+    if(todoTab.childElementCount == 1){
+        allSetLabel.style.display = "block"
+    }else{
+        allSetLabel.style.display = "none"
+    }
     task.querySelector('.undo').remove()
     let doneButton = document.createElement('button');
     doneButton.textContent = "Done";
@@ -30,6 +41,11 @@ async function doneTask(id, e=event){
     task.querySelector('.done-btn').remove()
     todoCount.textContent = parseInt(todoCount.textContent)-1
     doneCount.textContent = parseInt(doneCount.textContent)+1
+    if(todoTab.childElementCount == 1){
+        allSetLabel.style.display = "block"
+    }else{
+        allSetLabel.style.display = "none"
+    }
     let undo = document.createElement('button');
     undo.textContent = 'Undo';
     undo.className = 'undo';
@@ -65,6 +81,11 @@ async function savetask(){
     taskContent.textContent = task
     todoTab.appendChild(newTask)
     todoCount.textContent = parseInt(todoCount.textContent)+1
+    if(todoTab.childElementCount == 1){
+        allSetLabel.style.display = "block"
+    }else{
+        allSetLabel.style.display = "none"
+    }
     let doneButton = document.createElement('button');
     doneButton.textContent = "Done";
     doneButton.className = "done-btn";

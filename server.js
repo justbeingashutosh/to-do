@@ -112,6 +112,10 @@ function hashPassword(password){
 }
 
 app.get('/home', async(req, res) => {
+    if(!req.user){
+        res.redirect('/login')
+        return
+    }
     const userData = await users.findOne({username: req.user.username});
     // console.log("Logging user data tasks: ", userData.tasks)
     res.render('index', {userData: userData.tasks});
