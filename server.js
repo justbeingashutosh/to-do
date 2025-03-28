@@ -63,7 +63,7 @@ passport.deserializeUser(async(id, cb)=>{ //Function to retreive user info upon 
 
 app.use(session({
     secret: "sklmxms",
-    store: mongoStore.create({mongoUrl: 'mongodb://127.0.0.1:27017'}),
+    store: mongoStore.create({mongoUrl: atlasURI}),
     cookie: {maxAge: 1000*60*60*72},
 }))
 
