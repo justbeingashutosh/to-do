@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todoly</title>
+    <link rel="stylesheet" href="utils.css">
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">Todoly</div>
+        <div class="random">
+        <div class="left">
+            <h1>Level up your <br> productivity with Todoly!</h1>
+            <p>Provide a direction to your life and catch up with your goals with Todoly.</p>
+            <button style="background-color: rgb(36, 176, 241);">Get Started</button>
+        </div>
+        <div class="right">
+            <div class="imgcontainer">
+                <img src="/assets/scrshot.png" alt="">
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+<script>
+    const getStartedBtn =  document.querySelector('button')
+    getStartedBtn.addEventListener('click', function(event) {
+        window.location.href = '/login';
+    });
+</script>
+
+</html>
